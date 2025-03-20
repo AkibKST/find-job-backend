@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { jobRoutes } from '../modules/jobs/job.route';
+import { JobApplicationRoutes } from '../modules/jobApplication/jobApplication.route';
 
 const router = Router();
 
@@ -7,6 +8,10 @@ const moduleRoutes = [
   {
     path: '/job',
     route: jobRoutes,
+  },
+  {
+    path: '/jobApplication',
+    route: JobApplicationRoutes,
   },
 ];
 
