@@ -10,11 +10,14 @@ router.post(
 );
 // --------------------------------------
 
-// create get all jobs route
+// get all jobs route
 //--------------------------------
 
-// create get single job with _id route
-
+// get single UserApplication with email query route
+router.get(
+  '/UserJobApplication',
+  JobApplicationControllers.getSingleUserJobApplication,
+);
 //--------------------------------
 
 // // create update profile

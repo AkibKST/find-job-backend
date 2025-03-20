@@ -17,6 +17,23 @@ const createJobApplication = catchAsync(async (req, res) => {
 });
 //---------------------------------------------
 
+//get single user job application by email query
+const getSingleUserJobApplication = catchAsync(async (req, res) => {
+  const email = req.query.email;
+  const result = await JobApplicationServices.getSingleUserApplication(
+    email as string,
+  );
+
+  sendResponse(res, {
+    statusCode: 201,
+    success: true,
+    message: 'Get Single User Job Application successfully',
+    data: result,
+  });
+});
+//---------------------------------------------
+
 export const JobApplicationControllers = {
   createJobApplication,
+  getSingleUserJobApplication,
 };

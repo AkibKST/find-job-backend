@@ -8,6 +8,15 @@ const createJobApplication = async (applicationData: TJobApplication) => {
 };
 //---------------------------
 
+//get Single User job application
+const getSingleUserApplication = async (email: string) => {
+  const query = { applicant_email: email };
+  const result = await JobApplication.find(query);
+  return result;
+};
+//---------------------------
+
 export const JobApplicationServices = {
   createJobApplication,
+  getSingleUserApplication,
 };
