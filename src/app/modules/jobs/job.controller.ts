@@ -2,7 +2,7 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { JobServices } from './job.service';
 
-//create user
+//create job
 const createJob = catchAsync(async (req, res) => {
   const result = await JobServices.createJob(req.body);
   sendResponse(res, {
@@ -30,11 +30,23 @@ const getAllJob = catchAsync(async (req, res) => {
 });
 //---------------------------------------------
 
-//create get profile
+//create get single job by id
+const getSingleJob = catchAsync(async (req, res) => {
+  const id = req.params.id;
+  const result = await JobServices.getSingleJob(id);
+
+  sendResponse(res, {
+    statusCode: 201,
+    success: true,
+    message: 'Get Single Job successfully',
+    data: result,
+  });
+});
 
 //---------------------------------------------
 
 export const JobControllers = {
   getAllJob,
   createJob,
+  getSingleJob,
 };

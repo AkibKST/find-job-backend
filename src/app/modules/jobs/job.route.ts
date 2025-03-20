@@ -6,10 +6,14 @@ const router = express.Router();
 //will call controller func
 // create user route
 router.post('/createJob', JobControllers.createJob);
+//--------------------------------
+
+// create get all jobs route
 router.get('/getAllJobs', JobControllers.getAllJob);
 //--------------------------------
 
-// create get profile
+// create get single job with _id route
+router.get('/getSingleJob/:id', JobControllers.getSingleJob);
 
 //--------------------------------
 

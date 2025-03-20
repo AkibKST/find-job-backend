@@ -10,7 +10,7 @@ const createJob = async (userData: TJobPosting) => {
 };
 // -------------------------------
 
-// ekta user made korlam
+// get all jobs service
 const getAllJobs = async () => {
   const result = await Jobs.find();
   return result;
@@ -22,8 +22,11 @@ const getAllJobs = async () => {
 };
 //---------------------------------------------
 
-// get user profile
-
+// get single job by id
+const getSingleJob = async (id: string) => {
+  const result = await Jobs.findById(id);
+  return result;
+};
 //---------------------------------------------
 
 // update user profile
@@ -33,4 +36,5 @@ const getAllJobs = async () => {
 export const JobServices = {
   getAllJobs,
   createJob,
+  getSingleJob,
 };
