@@ -5,6 +5,7 @@ const JobApplicationSchema = new Schema<TJobApplication>({
   job_id: {
     type: Schema.Types.ObjectId,
     required: true,
+    ref: 'jobs',
   },
   applicant_email: {
     type: String,
