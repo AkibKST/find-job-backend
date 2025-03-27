@@ -38,8 +38,22 @@ const getJobApplicationByJobId = async (jobId: string) => {
 };
 //---------------------------
 
+//update job application status by application id
+const updateStatus = async (data: string, id: string) => {
+  const filter = { _id: id };
+  const updateDoc = {
+    $set: {
+      status: data,
+    },
+  };
+  const result = await JobApplication.findByIdAndUpdate(filter, updateDoc);
+  return result;
+};
+//---------------------------
+
 export const JobApplicationServices = {
   createJobApplication,
   getSingleUserApplication,
   getJobApplicationByJobId,
+  updateStatus,
 };

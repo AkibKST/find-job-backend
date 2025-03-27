@@ -22,7 +22,10 @@ router.get(
 
 // get job application by job id
 router.get('/jobs/:job_id', JobApplicationControllers.getJobApplicationByJobId);
+//--------------------------------
 
+//update job application status by application id
+router.patch('/app/:id', JobApplicationControllers.updateStatus);
 //--------------------------------
 
 export const JobApplicationRoutes = router;

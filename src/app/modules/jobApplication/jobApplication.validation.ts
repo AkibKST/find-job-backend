@@ -7,6 +7,7 @@ const JobApplicationSchema = z.object({
   linkedIn: z.string().url({ message: 'Invalid LinkedIn URL' }),
   github: z.string().url({ message: 'Invalid GitHub URL' }),
   resume: z.string().min(1, { message: 'Resume is required' }),
+  status: z.string().default('Under Review'),
 });
 
 // Export the Zod schema

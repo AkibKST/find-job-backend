@@ -23,6 +23,10 @@ const JobApplicationSchema = new Schema<TJobApplication>({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: 'Under Review',
+  },
 });
 
 export const JobApplication = model<TJobApplication>(

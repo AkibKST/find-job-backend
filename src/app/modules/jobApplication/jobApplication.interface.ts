@@ -6,4 +6,5 @@ export type TJobApplication = {
   linkedIn: string;
   github: string;
   resume: string;
+  status: string;
 };
