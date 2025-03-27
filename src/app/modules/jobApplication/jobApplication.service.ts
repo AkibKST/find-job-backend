@@ -30,7 +30,16 @@ const getSingleUserApplication = async (email: string) => {
 };
 //---------------------------
 
+// get job application by job_id
+const getJobApplicationByJobId = async (jobId: string) => {
+  const query = { job_id: jobId };
+  const result = await JobApplication.find(query);
+  return result;
+};
+//---------------------------
+
 export const JobApplicationServices = {
   createJobApplication,
   getSingleUserApplication,
+  getJobApplicationByJobId,
 };

@@ -33,7 +33,22 @@ const getSingleUserJobApplication = catchAsync(async (req, res) => {
 });
 //---------------------------------------------
 
+// get job application by job_id
+const getJobApplicationByJobId = catchAsync(async (req, res) => {
+  const jobId = req.params.job_id;
+  const result = await JobApplicationServices.getJobApplicationByJobId(jobId);
+
+  sendResponse(res, {
+    statusCode: 201,
+    success: true,
+    message: 'Get Job Application by Job id successfully',
+    data: result,
+  });
+});
+//---------------------------------------------
+
 export const JobApplicationControllers = {
   createJobApplication,
   getSingleUserJobApplication,
+  getJobApplicationByJobId,
 };

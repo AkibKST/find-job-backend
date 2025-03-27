@@ -20,7 +20,8 @@ router.get(
 );
 //--------------------------------
 
-// // create update profile
+// get job application by job id
+router.get('/jobs/:job_id', JobApplicationControllers.getJobApplicationByJobId);
 
 //--------------------------------
 
