@@ -11,8 +11,12 @@ const createJob = async (userData: TJobPosting) => {
 // -------------------------------
 
 // get all jobs service
-const getAllJobs = async () => {
-  const result = await Jobs.find();
+const getAllJobs = async (email: string) => {
+  let query = {};
+  if (email) {
+    query = { hr_email: email };
+  }
+  const result = await Jobs.find(query);
   return result;
   // if password is not given, use default password
 

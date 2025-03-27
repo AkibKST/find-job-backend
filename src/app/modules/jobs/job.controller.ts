@@ -17,9 +17,10 @@ const createJob = catchAsync(async (req, res) => {
 // get all job
 const getAllJob = catchAsync(async (req, res) => {
   //   const { password, user: userData } = req.body // name alias
+  const email = req.query.email as string;
 
   // will call service func to send this data
-  const result = await JobServices.getAllJobs();
+  const result = await JobServices.getAllJobs(email);
 
   sendResponse(res, {
     statusCode: 201,
