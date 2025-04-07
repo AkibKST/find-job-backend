@@ -3,12 +3,12 @@ import { AuthControllers } from './auth.controller';
 
 const router = express.Router();
 
-//login route
+//access token route
 router.post('/jwt-access-token', AuthControllers.accessToken);
 //------------------------------------
 
-//change password route
-
+//Remove token route when user is logged out
+router.post('/jwt-clear-token', AuthControllers.removeToken);
 //------------------------------------
 
 //refresh token route

@@ -19,7 +19,7 @@ const verifyToken = catchAsync(async (req, res, next): Promise<void> => {
       if (err) {
         throw new AppError(401, 'Unauthorized access!');
       }
-
+      req.user = decoded; // Attach the decoded token to the request object
       next();
     },
   );

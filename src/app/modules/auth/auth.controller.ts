@@ -23,8 +23,21 @@ const accessToken = catchAsync(async (req, res) => {
 
 //--------------------------------------------
 
-// change password controller
+//Remove token controller when user is logged out
+const removeToken = catchAsync(async (req, res) => {
+  // remove token from cookie
+  res.clearCookie('accessToken', {
+    secure: false,
+    httpOnly: true,
+  });
 
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: 'Remove token successfully!',
+    data: {},
+  });
+});
 //--------------------------------
 
 //create refresh token
@@ -51,4 +64,5 @@ const accessToken = catchAsync(async (req, res) => {
 
 export const AuthControllers = {
   accessToken,
+  removeToken,
 };

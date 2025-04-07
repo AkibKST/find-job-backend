@@ -1,3 +1,4 @@
+import AppError from '../../errors/AppError';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { JobApplicationServices } from './jobApplication.service';
@@ -20,6 +21,13 @@ const createJobApplication = catchAsync(async (req, res) => {
 //get single user job application by email query
 const getSingleUserJobApplication = catchAsync(async (req, res) => {
   const email = req.query.email;
+
+  // console.log(email);
+  // console.log(req.user.email.email);
+
+  if (req?.user?.email.email !== email) {
+    throw new AppError(403, 'You are not authorized to access this resource!');
+  }
   const result = await JobApplicationServices.getSingleUserApplication(
     email as string,
   );

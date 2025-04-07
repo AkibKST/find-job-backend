@@ -3,7 +3,7 @@ import catchAsync from '../utils/catchAsync';
 
 const logger = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    console.log('in side the logger middleware');
+    // console.log('in side the logger middleware');
     next();
   },
 );
