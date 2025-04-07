@@ -23,6 +23,7 @@ const getSingleUserJobApplication = catchAsync(async (req, res) => {
   const result = await JobApplicationServices.getSingleUserApplication(
     email as string,
   );
+  // console.log(req.cookies);
 
   sendResponse(res, {
     statusCode: 201,

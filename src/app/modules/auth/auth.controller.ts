@@ -6,17 +6,18 @@ import { AuthServices } from './auth.service';
 const accessToken = catchAsync(async (req, res) => {
   const email = req.body;
   const result = await AuthServices.accessToken(email);
-  // Set refresh token in cookie
-  //   res.cookie('refreshToken', refreshToken, {
-  //     secure: config.NODE_ENV === 'production',
-  //     httpOnly: true,
-  //   });
+
+  // Set access token in cookie
+  res.cookie('accessToken', result, {
+    secure: false,
+    httpOnly: true,
+  });
 
   sendResponse(res, {
     statusCode: 200,
     success: true,
     message: 'Access token created successfully!',
-    data: result,
+    data: {},
   });
 });
 
