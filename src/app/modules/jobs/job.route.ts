@@ -1,5 +1,6 @@
 import express from 'express';
 import { JobControllers } from './job.controller';
+import logger from '../../middlewares/logger';
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.post('/createJob', JobControllers.createJob);
 //--------------------------------
 
 // create get all jobs route
-router.get('/getAllJobs', JobControllers.getAllJob);
+router.get('/getAllJobs', logger, JobControllers.getAllJob);
 //--------------------------------
 
 // create get single job with _id route

@@ -1,5 +1,6 @@
 import express from 'express';
 import { JobApplicationControllers } from './jobApplication.controller';
+import verifyToken from '../../middlewares/verifyToken';
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.post(
 // get single UserApplication with email query route
 router.get(
   '/UserJobApplication',
+  verifyToken,
   JobApplicationControllers.getSingleUserJobApplication,
 );
 //--------------------------------
