@@ -4,28 +4,11 @@
 
 # Documentation:
 
-# --Prerequisites:
-
-Ensure you have the following installed:
-
-- Node.js(>=14.x)
-- npm or yarn
-- MongoDB
-
-# --Clone project:
-
-git clone
-
 # --Live Demo:
 
-# --Start Project:
+# \_\_\_Frontend: https://find-job-ffde3.web.app
 
-- Usage:
-  npm run start:dev
-
-- Once the server is running, use the api endpoint.
-
----
+# \_\_\_Backend: https://find-job-server-lxnesn19j-akibul-islams-projects.vercel.app
 
 ## Project Name: Find job portal system backend.
 
@@ -33,21 +16,13 @@ git clone
 
 ### Story
 
----
-
-<!-- In the vibrant coastal town of Cox's Bazar, famous for its long Inani beach, tourism was thriving. The town, with its scenic beauty and lively atmosphere, was a favorite spot for tourists and locals alike. Seeing an opportunity, my client a local entrepreneur with a passion for technology, decided to start a bike rental service to cater to both tourists and locals.
-
-My client envisioned a seamless bike rental system where users could easily rent bikes online. He wanted a backend system that would handle user registrations, bike availability, and booking management efficiently. To achieve this, he planned to hire a developer to build the backend for the Bike Rental Reservation System. -->
+CAREER-CODE: A JOB PORTAL SYSTEM
+A comprehensive job portal platform designed to enable seamless interaction between job seekers and employers. The system provides full CRUD operations for managing job postings, user authentication, and streamlined job application processes.
 
 **Models:**
 
-1. **User Model**
-2. **Bike Model**
-3. **Booking Model**
-
-My client's bike rental service quickly became popular. Tourists and locals loved the convenience of booking bikes online and exploring Cox's Bazar. With a robust backend system in place, He could efficiently manage his business, and his customers enjoyed a seamless rental experience.
-
----
+1. **Job Model**
+2. **Job Application Model**
 
 ### Technology Stack:
 
@@ -55,346 +30,147 @@ My client's bike rental service quickly became popular. Tourists and locals love
 - **Web Framework**: Express.js
 - **ODM & Validation Library**: Zod, Mongoose for MongoDB
 
-### Main Part:
+### 🌟 Project Purpose
 
-### Models:
+The purpose of this project is to assess skills, creativity, and problem-solving abilities while providing an efficient recruitment and job application experience.
 
-1. **User Model**:
-   - **name**: The name of the user.
-   - **email**: The contact email address.
-   - **password**: The account password.
-   - **phone**: The contact phone number.
-   - **address**: The physical address.
-   - **role**: admin / user
-2. **Bike Model**:
-   - **name**: The name of the bike model.
-   - **description**: A brief description of the bike.
-   - **pricePerHour**: The rental price per hour.
-   - **isAvailable**: Indicates if the bike is available for rental (default: true).
-   - **cc**: The engine capacity of the bike in cubic centimeters.
-   - **year**: The manufacturing year of the bike.
-   - **model**: The model of the bike.
-   - **brand**: The brand of the bike.
-3. **Booking Model**:
-   - **userId**: Reference to the User model.
-   - **bikeId**: Reference to the Bike model.
-   - **startTime**: The start time of the rental.
-   - **returnTime**: The return time of the rental.
-   - **totalCost**: The total cost of the rental.
-   - **isReturned**: Indicates if the bike has been returned (default: false).
+### 💡 Key Features
 
-### API Endpoints:
+# Authentication System: Email/password login, Google login, account recovery, and protected routes.
 
-## **User Routes**:
+- Job Management: Add, update, delete, and view job postings.
+- Job Search & Filters: Search jobs by title and filter by job type, experience level, and salary range.
+- Job Applications: Apply for jobs with detailed forms and manage your applications.
+- Employer Tools: Employers can review applications, update jobs, and manage postings.
+- Error Handling: User-friendly error messages and loading indicators.
+- Session Management: Secure session management with JWT tokens.
 
-1. **Sign Up**
-   - **Route**: /api/auth/signup (POST)
-   - **Request Body**:
-     ```json
-     {
-       "name": "John Doe",
-       "email": "john@example.com",
-       "password": "password123",
-       "phone": "1234567890",
-       "address": "123 Main St, Anytown",
-       "role": "admin"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 201,
-       "message": "User registered successfully",
-       "data": {
-         "_id": "60d9c4e4f3b4b544b8b8d1f5",
-         "name": "John Doe",
-         "email": "john@example.com",
-         "phone": "1234567890",
-         "address": "123 Main St, Anytown",
-         "role": "admin",
-         "createdAt": "2024-06-10T13:26:51.289Z",
-         "updatedAt": "2024-06-10T13:26:51.289Z",
-         "__v": 0
-       }
-     }
-     ```
-2. **User Login**
-   - **Route**: /api/auth/login (POST)
-   - **Request Body**:
-     ```json
-     {
-       "email": "john@example.com",
-       "password": "password123"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "User logged in successfully",
-       "token": "jwt_token",
-       "data": {
-         "_id": "60d9c4e4f3b4b544b8b8d1c3",
-         "name": "John Doe",
-         "email": "john@example.com",
-         "phone": "1234567890",
-         "address": "123 Main St, Anytown",
-         "role": "admin"
-       }
-     }
-     ```
-3. **Get Profile**
-   - **Route**: /api/users/me (GET)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "User profile retrieved successfully",
-       "data": {
-         "_id": "6666ff917181b8e5ffe04f91",
-         "name": "admin",
-         "email": "admin@gmail.com",
-         "phone": "1234567890",
-         "address": "123 Main St, Anytown",
-         "role": "admin",
-         "createdAt": "2024-06-10T13:28:49.260Z",
-         "updatedAt": "2024-06-10T13:28:49.260Z",
-         "__v": 0
-       }
-     }
-     ```
-4. **Update Profile**
-   - **Route**: /api/users/me (PUT)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - **Request Body**:
-     ```json
-     {
-       "name": "John Updated",
-       "phone": "0987654321"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Profile updated successfully",
-       "data": {
-         "_id": "60d9c4e4f3b4b544b8b8d1c5",
-         "name": "John Updated",
-         "email": "john@example.com",
-         "phone": "0987654321",
-         "address": "123 Main St, Anytown",
-         "role": "admin"
-       }
-     }
-     ```
+### 🖌️ Application Pages
 
-## **Bike Routes**:
+## Public Pages
 
-1. **Create Bike (Admin Only)**
-   - **Route**: /api/bikes (POST)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - **Request Body**:
-     ```json
-     {
-       "name": "Mountain Bike",
-       "description": "A durable mountain bike for rough terrains.",
-       "pricePerHour": 15,
-       "cc": 250,
-       "year": 2022,
-       "model": "X1",
-       "brand": "Yamaha"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Bike added successfully",
-       "data": {
-         "_id": "60d9c4e4f3b4b544b8b8d1c4",
-         "name": "Mountain Bike",
-         "description": "A durable mountain bike for rough terrains.",
-         "pricePerHour": 15,
-         "isAvailable": true,
-         "cc": 250,
-         "year": 2022,
-         "model": "X1",
-         "brand": "Yamaha"
-       }
-     }
-     ```
-2. **Get All Bikes**
+# Home Page (/): Displays Name.
 
-   - **Route**: /api/bikes (GET)
-   - **Response**:
+# All Jobs (/api/job/getAllJobs): View all jobs, search, filter, and sort by deadline.
 
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Bikes retrieved successfully",
-       "data": [
-         {
-           "_id": "bike_id",
-           "name": "Mountain Bike",
-           "description": "A durable mountain bike for rough terrains.",
-           "pricePerHour": 15,
-           "isAvailable": true,
-           "cc": 250,
-           "year": 2022,
-           "model": "X1",
-           "brand": "Yamaha"
-         },
-         ...other bikes...
-       ]
-     }
+### Protected Pages
 
-     ```
+# Add Job (/api/job/createJob): Form for creating job postings with employer details.
 
-3. **Update Bike (Admin Only)**
-   - **Route**: /api/bikes/:id (PUT)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - **Request Body**:
-     ```json
-     {
-       "pricePerHour": 20
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Bike updated successfully",
-       "data": {
-         "_id": "bike_id",
-         "name": "Mountain Bike",
-         "description": "A durable mountain bike for rough terrains.",
-         "pricePerHour": 20, // Updated price per hour
-         "isAvailable": true,
-         "cc": 250,
-         "year": 2022,
-         "model": "X1",
-         "brand": "Yamaha"
-       }
-     }
-     ```
-4. **Delete Bike (Admin Only)**
-   - **Route**: /api/bikes/:id (DELETE)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Bike deleted successfully",
-       "data": {
-         "_id": "bike_id",
-         "name": "Mountain Bike",
-         "description": "A durable mountain bike for rough terrains.",
-         "pricePerHour": 20,
-         "isAvailable": false,
-         "cc": 250,
-         "year": 2022,
-         "model": "X1",
-         "brand": "Yamaha"
-       }
-     }
-     ```
+# Get Single Job (/api/job/getSingleJob/:id)
 
-## **Rental Routes**:
+# Get Specific Job by User (/api/job/getAllJobs?email=hr@innovatetech.com)
 
-1. **Create Rental**
+# Create Job Application (/api/jobApplication/createJobApplication): create a job application by user.
 
-   - **Route**: /api/rentals (POST)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - User information should be extracted from the token
-   - **Bike's availability status should be updated to false**
-   - **Request Body**:
-     ```json
-     {
-       "bikeId": "60d9c4e4f3b4b544b8b8d1c4",
-       "startTime": "2024-06-10T09:00:00Z"
-     }
-     ```
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Rental created successfully",
-       "data": {
-         "_id": "60d9c4e4f3b4b544b8b8d1c4",
-         "userId": "60d9c4e4f3b4b544b8b8d1c3",
-         "bikeId": "60d9c4e4f3b4b544b8b8d1c4",
-         "startTime": "2024-06-10T09:00:00Z",
-         "returnTime": null,
-         "totalCost": 0,
-         "isReturned": false
-       }
-     }
-     ```
+# Get My Job Application (/api/jobApplication/UserJobApplication?email=error@debug.com)
 
-   **Important Note:** Upon creating a rental, ensure the bike's isAvailable status is set to false to indicate that it is currently rented out and not available for other users to rent.
+# Get Job Application By Job Id (/api/jobApplication/jobs/:id)
 
-1. **Return Bike (Admin Only)**
-   - **Route**: /api/rentals/:id/return (PUT)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - **Request Body**: Not needed
-   - **Bike's availability status should be updated to true**
-   - **Hints**: The cost should be calculated based on the start and return time of the rental. For example, if the start time is "2024-06-10T09:00:00Z" and the return time is "2024-06-10T18:00:00Z" (current time), the total rental duration is 9 hours. If the price per hour is $15, the total cost will be 9 \* 15 = $135.
-   - **Response**:
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Bike returned successfully",
-       "data": {
-         "_id": "60d9c4e4f3b4b544b8b8d1c4",
-         "userId": "60d9c4e4f3b4b544b8b8d1c3",
-         "bikeId": "60d9c4e4f3b4b544b8b8d1c4",
-         "startTime": "2024-06-10T09:00:00Z",
-         "returnTime": "2024-06-10T18:00:00Z", // Current time when returning the bike
-         "totalCost": 135, // Calculated based on rental duration
-         "isReturned": true
-       }
-     }
-     ```
-1. **Get All Rentals for User (My rentals)**
+### 📂 Architecture
 
-   - **Route**: /api/rentals (GET)
-   - **Request Headers**: Authorization: Bearer jwt_token
-   - **Response**:
+### Navbar: Includes company logo, navigation links, user info, and authentication controls.
 
-     ```json
-     {
-       "success": true,
-       "statusCode": 200,
-       "message": "Rentals retrieved successfully",
-       "data": [
-         {
-           "_id": "60d9c4e4f3b4b544b8b8d1c4",
-           "userId": "60d9c4e4f3b4b544b8b8d1c3",
-           "bikeId": "60d9c4e4f3b4b544b8b8d1c4",
-           "startTime": "2024-06-10T09:00:00Z",
-           "returnTime": "2024-06-10T18:00:00Z",
-           "totalCost": 135,
-           "isReturned": true
-         },
-         ...other rentals...
-       ]
-     }
+### Footer: Displays company information, policies, and social links.
 
-     ```
+### Dynamic Routing: Main section renders pages based on routes.
 
-### Bonus Part:
+### 🛠️ Technologies Used
+
+### Frontend: React.js, Tailwind CSS, DaisyUI
+
+### Backend: Node.js, Express.js, Typescript, Mongoose
+
+### Database: MongoDB
+
+### Authentication: Firebase Auth, Google Authentication
+
+### Deployment: vercel CLI
+
+### Version Control: GitHub
+
+### 🚀 Features Checklist
+
+- Authentication System
+- User registration and login with email/password or Google Authentication.
+- Password recovery system with input validation.
+- Protected routes for all pages except landing and authentication pages.
+- Job Functionality
+- Full CRUD operations for jobs.
+- Search and filter by job type, experience level, and salary range.
+- Sort by application deadline.
+- Application Process
+- Form for submitting applications with personal and job-specific details.
+- Manage applications with withdrawal options.
+- Employer Tools
+- View, edit, and delete job postings.
+- Review applications with dropdown actions (Rejected, Shortlisted, Hired, Scheduled).
+- Security
+- Secure session management with JWT tokens.
+- Authorization for API routes.
+
+### 📜 Best Practices Followed
+
+### 🧹 Code Quality
+
+# Modular Code: Code is divided into reusable components and modules for better maintainability.
+
+# Clean and Readable: Proper indentation, meaningful variable names, and comments for clarity.
+
+# DRY Principle: Reused logic to avoid redundancy and ensure maintainability.
+
+# Consistent Naming Conventions: Followed camelCase for variables and functions, and PascalCase for components.
+
+### 🚦 Error Handling
+
+- Frontend Errors: Clear and user-friendly error messages are displayed for invalid inputs, failed requests, or other issues.
+- Backend Errors: Properly structured error responses with HTTP status codes.
+- Boundary Testing: Validations to handle edge cases and ensure application stability.
+
+### 🔒 Security
+
+- JWT Authentication: Used secure JSON Web Tokens to protect API endpoints and user sessions.
+- Input Validation: Sanitized and validated user inputs to prevent security vulnerabilities like XSS and SQL injection.
+- Protected Routes: Ensured sensitive pages and APIs are accessible only to authenticated users.
+
+### 🖌️ Responsive Design
+
+- Mobile-First Approach: Designed the UI to adapt seamlessly to various screen sizes.
+- Scalable Layouts: Used flexible grid systems (Tailwind CSS) to ensure cross-device compatibility.
+- Accessible UI: Followed web accessibility standards to enhance usability for all users.
+
+### 📂 Project Organization
+
+- Folder Structure: Followed a clear folder structure separating components, pages, services, and assets.
+- Meaningful Commits: Used descriptive commit messages to track changes effectively.
+- README Documentation: Added detailed instructions for setting up, running, and understanding the project.
+
+### ⚡ Performance Optimization
+
+- Lazy Loading: Dynamically loaded components to improve initial page load speed.
+- Efficient State Management: Used local state and React Query to manage data efficiently.
+- Reduced Re-renders: Optimized components to prevent unnecessary re-renders for better performance.
+
+### 🌐 Deployment
+
+# Error-Free Hosting: Ensured the deployed application is free of runtime errors.
+
+# Live Updates: Automatically updates changes on the live application through CI/CD pipelines.
+
+# Environment Variables: Secured sensitive data using .env files.
+
+### ✅ Testing
+
+- Manual Testing: Tested all user flows to ensure the app functions as intended.
+- Error Scenarios: Simulated errors to verify the robustness of error-handling mechanisms.
+- These practices ensure that the project is scalable, maintainable, and user-friendly. 🚀
+
+### 📜 License
+
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute this project under the terms of the license.
+
+### 📄 MIT License
 
 ### Middleware and Error Handling:
 

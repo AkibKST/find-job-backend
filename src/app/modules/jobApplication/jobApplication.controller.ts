@@ -23,9 +23,9 @@ const getSingleUserJobApplication = catchAsync(async (req, res) => {
   const email = req.query.email;
 
   // console.log(email);
-  // console.log(req.user.email.email);
+  // console.log(req.user);
 
-  if (req?.user?.email.email !== email) {
+  if (req.user?.email !== email) {
     throw new AppError(403, 'You are not authorized to access this resource!');
   }
   const result = await JobApplicationServices.getSingleUserApplication(
